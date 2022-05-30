@@ -87,4 +87,3 @@
     </x-auth-card>
 </x-guest-layout>
 
-@endsection
