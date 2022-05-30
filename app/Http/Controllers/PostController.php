@@ -31,7 +31,7 @@ class PostController extends Controller
             'image' => $name,
             'date' => $request->date,
             'user_id' => $user->id,
-            'category_id' => $request->category_id
+            // 'category_id' => $request->category_id
 
         ]);
 
