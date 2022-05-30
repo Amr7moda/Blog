@@ -1,10 +1,4 @@
-@extends('web.layout')
 
-@section('title')
-create
-@endsection
-
-@section('body')
 
 <x-guest-layout>
     <x-auth-card>
@@ -92,4 +86,5 @@ create
         </form>
     </x-auth-card>
 </x-guest-layout>
+
 @endsection
