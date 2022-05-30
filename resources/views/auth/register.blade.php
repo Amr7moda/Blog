@@ -6,14 +6,14 @@ create
 
 @section('body')
 
+<!-- Validation Errors -->
 
 <div class="container ">
     <div class="row p-5 login">
         <div class="col-8  p-4 shadow border login">
-            <!-- Validation Errors -->
             <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-            <form method="POST" enctype="multipart/form-data" action="{{ route('register') }}">
+            <div method="POST" enctype="multipart/form-data" action="{{ route('register') }}">
                 @csrf
 
                 <!-- Fname -->
@@ -87,7 +87,7 @@ create
                         {{ __('Register') }}
                     </x-button>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>
