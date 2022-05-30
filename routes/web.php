@@ -19,7 +19,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/home', [PagesController::class, 'home']);
 Route::get('/contact', [PagesController::class, 'contact']);
-Route::get('/register', [RegisteredUserController::class, 'create']);
 Route::get('/dashboard', [PagesController::class, 'dashboard']);
 Route::get('profile/{id}', [PagesController::class, 'profile'])->name('web.profile');
 Route::get('/logout', [LogoutController::class, 'logout']);
