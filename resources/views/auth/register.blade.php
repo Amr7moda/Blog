@@ -12,7 +12,7 @@ create
     <div class="row p-5 login">
         <div class="col-8  p-4 shadow border login">
             <x-auth-validation-errors class="mb-4" :errors="$errors" />
-            <div method="POST" enctype="multipart/form-data" action="{{ route('register') }}">
+            <form method="POST" enctype="multipart/form-data" action="{{ route('register') }}">
                 @csrf
 
                 <!-- Fname -->
@@ -81,13 +81,12 @@ create
                     <a class="text-decoration-none mt-2 pe-3" href="{{ route('login') }}">
                         {{ __('Already registered?') }}
                     </a>
-                    <a href="{{ route('register') }}">
-                        <x-button class="btn btn-lg p-2 shadow w-25" style="color: black !important;">
-                            {{ __('Register') }}
-                        </x-button>
-                    </a>
+
+                    <x-button class="btn btn-lg p-2 shadow w-25" style="color: black !important;">
+                        {{ __('Register') }}
+                    </x-button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>
