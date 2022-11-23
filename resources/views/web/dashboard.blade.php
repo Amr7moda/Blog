@@ -55,7 +55,7 @@ Dashboard
             </li>
         </ul>
     </div>
-{{dd(Auth::user())}}
+{{-- {{dd(Auth::user())}} --}}
     <div class="container p-5 mx-auto w-75">
         <div class="text-center mt-5">
             <h2> My Posts</h2>

@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Social;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -29,18 +31,47 @@ class PostController extends Controller
             'title' => $request->title,
             'descripton' => $request->description,
             'image' => $name,
-            'date' => $request->date,
             'user_id' => $user->id,
             // 'category_id' => $request->category_id
 
         ]);
 
-        return redirect('home');
+        $show = Post::get();
+        $social = Social::get();
+
+        return view('post.show', compact('social', 'show'));
     }
 
     public function post_show()
     {
         $show = Post::get();
-        return view('post.show', ['show' => $show]);
+        $social = Social::get();
+
+        return view('post.show', compact('social', 'show'));
+    }
+
+    public function likes($userid, $postid)
+    {
+        $social = DB::table('socials')
+            ->where('post_id', '=', $postid)
+            ->first();
+        if (empty($social)) {
+            $social = new Social([
+                'user_id' => $userid,
+                'post_id' => $postid,
+                'likes_counter' => +1,
+            ]);
+            $social->save();
+        } else {
+            DB::table('socials')
+                ->where('post_id', '=', $postid)
+                ->limit(1)
+                ->increment('likes_counter', 1);
+        }
+
+        $show = Post::get();
+        $social = Social::get();
+
+        return view('post.show', compact('social', 'show'));
     }
 }

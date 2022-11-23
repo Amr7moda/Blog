@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/home', [PagesController::class, 'home']);
 Route::get('/contact', [PagesController::class, 'contact']);
-Route::get('/dashboard', [PagesController::class, 'dashboard']);
+Route::get('/dashboard', [PagesController::class, 'dashboard'])->middleware('auth');
 Route::get('profile/{id}', [PagesController::class, 'profile'])->name('web.profile');
 Route::get('/logout', [LogoutController::class, 'logout']);
 
@@ -27,6 +27,7 @@ Route::get('/logout', [LogoutController::class, 'logout']);
 Route::get('/post', [PostController::class, 'post_create']);
 Route::post('/post_store', [PostController::class, 'post_store']);
 Route::get('/show', [PostController::class, 'post_show']);
+Route::get('/like/{userid}/{postid}', [PostController::class, 'likes'])->name('like');
 
 
 Route::get('/home', function () {

@@ -23,17 +23,19 @@ class PagesController extends Controller
     {
         $users = User::where('id', $id)->get();
         $posts = Post::where('user_id', $id)->get();
-        return view('web.profile', compact('users','posts'));
+        return view('web.profile', compact('users', 'posts'));
     }
 
     public function dashboard()
     {
-        if (Post::get()->user_id == Auth::user()->id) {
+        // $posts = Post::get('user_id');
+        // dd($posts('user_id'));
+        // if ($posts == Auth::user()->id) {
+        //     $show = Post::get();
+        //     return view('web.dashboard', ['show' => $show]);
+        // } else {
             $show = Post::get();
             return view('web.dashboard', ['show' => $show]);
-        } else {
-            $show = Post::get();
-            return view('web.dashboard', ['show' => $show]);
-        }
+        // }
     }
 }
